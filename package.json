@@ -15,5 +15,13 @@
     "doc": "docs"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prafulpatekar/nodejsninja.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prafulpatekar/nodejsninja/issues"
+  },
+  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme"
 }
