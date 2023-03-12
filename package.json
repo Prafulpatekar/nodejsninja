@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/Prafulpatekar/nodejsninja/issues"
   },
-  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme"
+  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme",
+  "devDependencies": {}
 }
