@@ -9,16 +9,16 @@
     "pug": "^3.0.2"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon app.js"
   },
-  "name": "netninjas",
-  "version": "1.0.0",
+  "name": "nodejsninja",
+  "version": "1.0.1",
   "description": "Learning NodeJs",
   "main": "files.js",
   "directories": {
     "doc": "docs"
   },
-  "author": "",
+  "author": "Praful.Coder",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/Prafulpatekar/nodejsninja/issues"
   },
-  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme"
+  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme",
+  "devDependencies": {}
 }
