@@ -4,13 +4,16 @@ const Blog = require('../models/blog');
 const blog_index = (req,res)=>{
     res.render('index');
 };
+
 const blog_about = (req,res)=>{
     res.render('about');
 };
+
 const blog_create_get = (req,res)=>{
     // res.send('<h3>About Page</h3>')
     res.render('create');
 };
+
 const blog_create_post = (req,res)=>{
     console.log(req.body);
     // const blog = new Blog({
@@ -48,6 +51,7 @@ const blog_single_get = (req,res)=>{
         console.log(err);
     });
 };
+
 const blog_delete = (req,res)=>{
     const id = req.params.pkid;
     Blog.findByIdAndDelete(id)

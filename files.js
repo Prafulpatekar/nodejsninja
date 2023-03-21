@@ -2,7 +2,7 @@ const fs = require('fs');
 
 // Reading
 
-fs.readFile('./docs/blog2.txt',(err,data)=>{
+fs.readFile(`${__dirname}/docs/blog2.txt`,(err,data)=>{
     if(err){
         console.log(err)
     }
@@ -11,9 +11,9 @@ fs.readFile('./docs/blog2.txt',(err,data)=>{
 
 // Writting
 
-fs.writeFile('./docs/blog2.txt','HELLO WORLD!!👌👌',()=>{
+fs.writeFile(`${__dirname}/docs/blog2.txt`,'HELLO WORLD!!👌👌',()=>{
     console.log("File Done!")
-    fs.readFile('./docs/blog2.txt',(err,data)=>{
+    fs.readFile(`${__dirname}/docs/blog2.txt`,(err,data)=>{
         if(err){
             console.log(err)
         }
@@ -22,8 +22,8 @@ fs.writeFile('./docs/blog2.txt','HELLO WORLD!!👌👌',()=>{
 })
 
 // Dirs
-if(!fs.existsSync('./static')){
-    fs.mkdir('./static',(err)=>{
+if(!fs.existsSync(`${__dirname}/static`)){
+    fs.mkdir(`${__dirname}/static`,(err)=>{
         if(err){
             console.log(err)
         }
@@ -31,7 +31,7 @@ if(!fs.existsSync('./static')){
     })
 }else{
     console.log("Alreay exist")
-    fs.rmdir('./static',(err)=>{
+    fs.rmdir(`${__dirname}/static`,(err)=>{
         if(err){
             console.log(err)
         }
@@ -41,8 +41,8 @@ if(!fs.existsSync('./static')){
 
 
 // Deleting
-if (fs.existsSync('./docs/blog.txt')){
-    fs.unlink('./docs/blog.txt',(err)=>{
+if (fs.existsSync(`${__dirname}/docs/blog.txt`)){
+    fs.unlink(`${__dirname}/docs/blog.txt`,(err)=>{
         if (err){
             console.log(err);
         }

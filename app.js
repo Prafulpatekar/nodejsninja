@@ -1,10 +1,15 @@
+// Third Party
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-const Blog = require('./models/blog');
 const { urlencoded } = require('express');
+
+// Project
 const blogRoutes = require('./routes/blogRoutes');
 const blogControllers = require('./controllers/blogController');
+
+//Express app
+const app = express();
 
 // Connecting DB
 const db = "mongodb+srv://prafulcoder:Coder.2000$23@nodejsninja.be8rcgc.mongodb.net/nodejstuts?retryWrites=true&w=majority"; 
@@ -16,8 +21,7 @@ mongoose.connect(db)
 }).catch((err)=>{
     console.log(err)
 });
-//Express app
-const app = express();
+
 
 // Register view engine
 app.set('view engine','ejs');
