@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const blogSchema = new Schema({
     title:{
         type:String,
-        required:true
+        required:true,
+        minlength:4,
+        maxlength:120
     },
     snippet:{
         type:String,

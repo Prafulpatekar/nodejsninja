@@ -3,7 +3,10 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { urlencoded } = require('express');
-
+// const  bodyParser = require('body-parser');
+// const expressValidator = require('express-validator');
+const env = require('dotenv');
+env.config()
 // Project
 const blogRoutes = require('./routes/blogRoutes');
 const blogControllers = require('./controllers/blogController');
@@ -12,15 +15,22 @@ const blogControllers = require('./controllers/blogController');
 const app = express();
 
 // Connecting DB
-const db = "mongodb+srv://prafulcoder:Coder.2000$23@nodejsninja.be8rcgc.mongodb.net/nodejstuts?retryWrites=true&w=majority"; 
-mongoose.connect(db)
+// mongoose.connect(process.env.MONGOURI || MONGOURI)
+mongoose.connect(process.env.MONGOURI)
 .then((results)=>{
     console.log("Connected To DB")
     // Listen server req
-    app.listen(3001);
+    const port = process.env.PORT || 3001
+    app.listen(port,()=>{
+        console.log("We are listening on port 3001")
+    });
 }).catch((err)=>{
     console.log(err)
 });
+
+mongoose.connection.on('error',(err)=>{
+    console.log(`There is a error ${err.message}`);
+})
 
 
 // Register view engine
@@ -31,6 +41,15 @@ app.use(express.static('public'));
 
 // Parse data from html form
 app.use(urlencoded({extended:true}));
+
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+// app.use(bodyParser.json());
+
+// express validator
+// app.use(expressValidator());
 
 // console.log middleware
 app.use(morgan('dev'));

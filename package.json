@@ -1,7 +1,10 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "express-validator": "^6.15.0",
     "lodash": "^4.17.21",
     "mongoose": "^7.0.2",
     "morgan": "^1.10.0",
@@ -27,6 +30,5 @@
   "bugs": {
     "url": "https://github.com/Prafulpatekar/nodejsninja/issues"
   },
-  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme",
-  "devDependencies": {}
+  "homepage": "https://github.com/Prafulpatekar/nodejsninja#readme"
 }

@@ -15,7 +15,7 @@ const blog_create_get = (req,res)=>{
 };
 
 const blog_create_post = (req,res)=>{
-    console.log(req.body);
+    
     // const blog = new Blog({
     //     title:req.body.title,
     //     snippet:res.body.snippet,
@@ -33,6 +33,7 @@ const blog_create_post = (req,res)=>{
 
 const blog_all_get = (req,res)=>{
     Blog.find()
+    .select("title snippet body")
     .then((result)=>{
         res.send(result);
     })
@@ -45,6 +46,7 @@ const blog_all_get = (req,res)=>{
 const blog_single_get = (req,res)=>{
     const id = req.params.pkid;
     Blog.findById(id)
+    // .select("title snippet body")
     .then((result)=>{
         res.send(result);
     }).catch((err)=>{
