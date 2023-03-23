@@ -3,13 +3,12 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { urlencoded } = require('express');
-// const  bodyParser = require('body-parser');
+const  bodyParser = require('body-parser');
 // const expressValidator = require('express-validator');
 const env = require('dotenv');
 env.config()
 // Project
 const blogRoutes = require('./routes/blogRoutes');
-const blogControllers = require('./controllers/blogController');
 
 //Express app
 const app = express();
@@ -42,22 +41,17 @@ app.use(express.static('public'));
 // Parse data from html form
 app.use(urlencoded({extended:true}));
 
-// parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }))
 
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // express validator
 // app.use(expressValidator());
 
 // console.log middleware
 app.use(morgan('dev'));
-
-app.get('/',blogControllers.blog_index);
-
-// Routing
-app.get('/about',blogControllers.blog_about);
 
 // Middleware for blog Routers
 app.use('/blogs',blogRoutes);

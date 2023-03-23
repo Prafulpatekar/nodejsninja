@@ -1,76 +1,62 @@
 // TO do all the logical CRUD operations
 const Blog = require('../models/blog');
 
-const blog_index = (req,res)=>{
-    res.render('index');
-};
-
-const blog_about = (req,res)=>{
-    res.render('about');
-};
-
-const blog_create_get = (req,res)=>{
-    // res.send('<h3>About Page</h3>')
-    res.render('create');
-};
-
-const blog_create_post = (req,res)=>{
-    
-    // const blog = new Blog({
-    //     title:req.body.title,
-    //     snippet:res.body.snippet,
-    //     body:req.body.body
-    // })
+exports.blog_create_post = (req,res)=>{
     const blog = new Blog(req.body);
     blog.save()
     .then((result)=>{
-
-        res.redirect('/blogs');
+        res.status(200).json({
+            data:result
+        });
     }).catch((err)=>{
-        console.log(err);
+        res.status(400).json({
+            error:err
+        });
     });
 };
 
-const blog_all_get = (req,res)=>{
+exports.blog_all_get = (req,res)=>{
     Blog.find()
     .select("title snippet body")
     .then((result)=>{
-        res.send(result);
+        res.status(200).json({
+            data:result
+        });
     })
     .catch((err)=>{
-        console.log(err);
+        res.status(400).json({
+            error:err
+        });
     });
 };
 
     
-const blog_single_get = (req,res)=>{
+exports.blog_single_get = (req,res)=>{
     const id = req.params.pkid;
     Blog.findById(id)
     // .select("title snippet body")
     .then((result)=>{
-        res.send(result);
+        res.status(200).json({
+            data:result
+        });
     }).catch((err)=>{
-        console.log(err);
+        res.status(404).json({
+            error:err
+        });
     });
 };
 
-const blog_delete = (req,res)=>{
+exports.blog_delete = (req,res)=>{
     const id = req.params.pkid;
     Blog.findByIdAndDelete(id)
     .then((result)=>{
-        res.send(result);
+        res.status(200).json({
+            data:`Blog with id "${result._id}" has been deleted`
+        });
     }).catch((err)=>{
-        console.log(err);
+        res.status(400).json({
+            error:err
+        });
     });
 };
 
-module.exports = {
-    blog_index,
-    blog_about,
-    blog_create_get,
-    blog_create_post,
-    blog_all_get,
-    blog_single_get,
-    blog_delete
-
-}
