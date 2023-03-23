@@ -20,7 +20,8 @@ exports.blog_all_get = (req,res)=>{
     .select("title snippet body")
     .then((result)=>{
         res.status(200).json({
-            data:result
+            data:result,
+            count:result.length
         });
     })
     .catch((err)=>{
