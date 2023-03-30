@@ -1,6 +1,6 @@
 const express = require('express');
 const blogControllers = require('../controllers/blogController');
-const createBlogValidator = require('../validators');
+// const createBlogValidator = require('../validators');
 
 // Express Router
 
